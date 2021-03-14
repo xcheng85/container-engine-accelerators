@@ -101,7 +101,7 @@ func main() {
 		glog.Errorf("failed to initialize nvml: %v", err)
 		return
 	}
-	defer nvml.Shutdown()
+	defer nvml.Shutdown() // only execute at the end of current {} block
 
 	if *enableContainerGPUMetrics {
 		glog.Infof("Starting metrics server on port: %d, endpoint path: %s, collection frequency: %d", *gpuMetricsPort, "/metrics", *gpuMetricsCollectionIntervalMs)
